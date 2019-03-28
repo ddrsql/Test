@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerOAuth", "SwaggerOAuth\SwaggerOAuth.csproj", "{1E2F31D0-0608-4655-8A6A-DAF47BEEE592}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E2F31D0-0608-4655-8A6A-DAF47BEEE592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2F31D0-0608-4655-8A6A-DAF47BEEE592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2F31D0-0608-4655-8A6A-DAF47BEEE592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2F31D0-0608-4655-8A6A-DAF47BEEE592}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3124EB8-3907-4A92-AC70-269DC13B9748}
+	EndGlobalSection
+EndGlobal
