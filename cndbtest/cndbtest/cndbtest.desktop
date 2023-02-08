@@ -1,0 +1,16 @@
+[Desktop Entry]
+X-Deepin-CreatedBy=com.deepin.dde.daemon.Launcher
+X-Deepin-AppID=cndbtest
+Version=1.0.1
+Encoding=UTF-8
+Name=cndbtest
+Comment=cndbtest test Software
+Comment[zh_CN]=cndbtest测试软件
+Exec=/usr/share/cndbtest/cndbtest
+Icon=/usr/share/icons/cndbtest.png
+GenericName=cndbtest Remote Control Software
+GenericName[zh_CN]=cndbtest测试软件
+keywords=cndbtest
+Categories=Network;RemoteControl;
+Type=Application
+Terminal=false
