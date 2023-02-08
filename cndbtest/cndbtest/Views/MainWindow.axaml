@@ -1,0 +1,64 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:cndbtest.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="500" Height="500"
+        x:Class="cndbtest.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="cndbtest">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+	
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"></RowDefinition>
+			<RowDefinition Height="10"></RowDefinition>
+			<RowDefinition Height="30"></RowDefinition>
+			<RowDefinition Height="10"></RowDefinition>
+			<RowDefinition Height="100"></RowDefinition>
+			<RowDefinition Height="100"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="120"></ColumnDefinition>
+			<ColumnDefinition Width="120"></ColumnDefinition>
+			<ColumnDefinition Width="120"></ColumnDefinition>
+			<ColumnDefinition Width="120"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		
+		<StackPanel Orientation="Horizontal" Grid.ColumnSpan="4">
+			<TextBlock Text="DM数据库："/>
+			<Button Name="BtnDMInsert" Command="{Binding DMInsertAsync}">DMInsert</Button>
+			<Button Name="BtnDMDelete" Command="{Binding DMDeleteAsync}">DMDelete</Button>
+			<Button Name="BtnDMUpdate" Command="{Binding DMUpdateAsync}">DMUpdate</Button>
+			<Button Name="BtnDMSelect" Command="{Binding DMSelectAsync}">DMSelect</Button>
+		</StackPanel>
+		
+		<StackPanel Grid.Row="4" Grid.ColumnSpan="4">
+			<TextBlock FontSize="16" Text="Simple Bindings"/>
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Height="100">
+				<TextBox Watermark="Two Way" UseFloatingWatermark="True"  Text="{Binding Path=StringValue}" Name="first"/>
+			</ScrollViewer>
+			<!--FontFamily="Microsoft YaHei,Simsun,微软雅黑,苹方-简,宋体-简"-->
+
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Height="100">
+				<TextBox Watermark="One Way" UseFloatingWatermark="True" Text="{Binding Path=StringValue, Mode=OneWay}"/>
+			</ScrollViewer>
+			
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Height="100">
+				<TextBox Watermark="One Time" UseFloatingWatermark="True" Text="{Binding Path=StringValue, Mode=OneTime}"/>
+			</ScrollViewer>
+		</StackPanel>
+ 	</Grid>
+	
+	
+		<!--
+		<StackPanel Grid.Row="2" Margin="18" Spacing="4" Width="300">
+			<DatePicker/>
+			<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<Button Command="{Binding Running}"  CommandParameter="Hello World" Content="点我" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		</StackPanel>-->
+	
+</Window>
