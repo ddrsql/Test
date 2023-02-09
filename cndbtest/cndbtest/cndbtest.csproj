@@ -50,4 +50,9 @@
 	<ItemGroup>
 	  <Folder Include="DmMigration\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="DmProvider">
+	    <HintPath>..\Lib\DmProvider.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
 </Project>
