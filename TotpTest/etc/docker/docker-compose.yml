@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+  totptest-web:
+    image: totptest:latest
+    container_name: totptest
+    build:
+      context: ../../
+      dockerfile: TotpTest/Dockerfile.local
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80;
+      - Kestrel__Certificates__Default__Path=/root/certificate/localhost.pfx
+      - Kestrel__Certificates__Default__Password=91f91912-5ab0-49df-8166-23377efaf3cc
+      - ConnectionStrings__Default=Server=mysql;Port=3306;Userid=root;Password=myPassw0rd;Database=TotpTest;
+    ports:
+      - "44381:443"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: on-failure  
+    volumes:
+      - ./certs:/root/certificate
+    networks:
+      - abp-network  
+  
+  db-migrator:
+    image: totptest:latest
+    container_name: db-migrator
+    build:
+      context: ../../
+      dockerfile: TotpTest/Dockerfile.local
+    environment:
+      - ConnectionStrings__Default=Server=mysql;Port=3306;Userid=root;Password=myPassw0rd;Database=TotpTest;
+    command:
+      - --migrate-database
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - abp-network
+  mysql:
+    container_name: mysql-db
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: myPassw0rd
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - abp-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  mysql_data:
+    name: totptest_mysql_data
+networks:
+  abp-network:
+    name: totptest-network
+    driver: bridge
