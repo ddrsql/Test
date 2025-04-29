@@ -1,0 +1,14 @@
+﻿{
+  "applications": {
+    "TotpTest": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44381",
+      "healthCheckEndpoint": "/health-status",
+      "healthUiEndpoint": "/health-ui",
+      "path": "../../TotpTest/TotpTest.csproj",
+      "execution": {
+        "order": 0
+      }
+    }
+  }
+}
