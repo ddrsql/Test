@@ -32,6 +32,16 @@ public class TotpTestMenuContributor : IMenuContributor
                 order: 0
             )
         );
+        context.Menu.Items.Insert(
+            0,
+            new ApplicationMenuItem(
+                TotpTestMenus.TwoFactorAuthentication,
+                l["Menu:TwoFactorAuthentication"],
+                "~/TwoFactorAuthentication",
+                icon: "fas",
+                order: 0
+            )
+        );
 
 
         //Administration

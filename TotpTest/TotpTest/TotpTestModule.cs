@@ -59,6 +59,9 @@ using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.MySQL;
 using Volo.Abp.Studio.Client.AspNetCore;
+using TotpTest.ProfileManagement;
+using Volo.Abp.Account.Web.ProfileManagement;
+using Volo.Abp.Account.Web.Pages.Account;
 
 namespace TotpTest;
 
@@ -173,7 +176,11 @@ public class TotpTestModule : AbpModule
         {
             context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
         }
-
+        //context.Services.Replace(ServiceDescriptor.Transient<IProfileManagementPageContributor, CustomProfileContributor>());
+        Configure<ProfileManagementPageOptions>(options =>
+        {
+            options.Contributors.Add(new CustomProfileContributor());
+        });
         ConfigureAuthentication(context);
         ConfigureMultiTenancy();
         ConfigureUrls(configuration);
@@ -230,6 +237,15 @@ public class TotpTestModule : AbpModule
                     bundle.AddFiles("/global-styles.css");
                 }
             );
+            options.ScriptBundles
+                .Configure(typeof(ManageModel).FullName,
+                    configuration =>
+                    {
+                        //configuration.AddFiles("/client-proxies/account-proxy.js");
+                        //configuration.AddFiles("/Pages/Account/Components/ProfileManagementGroup/Password/Default.js");
+                        //configuration.AddFiles("/Pages/Account/Components/ProfileManagementGroup/PersonalInfo/Default.js");
+                        configuration.AddFiles("/Pages/Account/Components/ProfileManagementGroup/TwoFactorAuthentication/Default.js");
+                    });
         });
     }
 
